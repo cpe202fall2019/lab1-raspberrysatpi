@@ -47,23 +47,32 @@ def bin_search(target, low, high, int_list):  # must use recursion
 
 		return
 
-	elif len(int_list) == 0 or (len(int_list) == 1 and int_list[0] == target):
+	elif len(int_list) == 0:
 
 		return None
 
+
 	else:
 		mid = (low + high) // 2
+#		print(mid)
+#		print(int_list[mid])
 
-		if int_list[mid] == target:
+		if (mid == low or mid == high) and int_list[mid] != target:
+#			print("Hi I am returning None")
+			return None
+
+		elif int_list[mid] == target:
 
 			return mid
 
 		elif int_list[mid] > target:
 
-			bin_search(target, low, mid, int_list)
+#			print("Hi I am greater than my target; lowering search")
+			return bin_search(target, low, mid, int_list)
 
 
 		elif int_list[mid] < target:
-			bin_search(target, mid, high, int_list)
+#			print("Hi I am greater than my target; lowering search")
+			return bin_search(target, mid, high, int_list)
 
-	pass
+
